@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
- 
+import Seatmap from './assets/Seatmap' 
+
 const App = () => {
    const backyback = "purple";
    const [bg,setBg] = useState(backyback)
@@ -27,6 +28,7 @@ const App = () => {
       <>
        <div className={`text-center py-64 px-32 h-screen w-screen bg-${bg}-500`}>
               <div >
+                <Seatmap/>
                 <div className="m-3">
                   <div className="m-3"><label htmlFor="" className="text-white font-mono px-3">Determine the color you want to display</label></div>
                   <div><input type="text" name="color" id="color" placeholder="enter your color" onChange={handleChange}/></div>

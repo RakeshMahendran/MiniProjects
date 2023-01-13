@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { useDatabase } from 'react-notion/database';
 
-function App() {
+function MyComponent() {
+  const { data, loading } = useDatabase({
+    databaseId: '0edf9a49be654db1b5eb4a11c890100c',
+    filter: {},
+    sort: [{ property: 'created_time', direction: 'descending' }],
+  });
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ul>
+      {data.map((item) => (
+        <li key={item.id}>{item.title}</li>
+      ))}
+    </ul>
   );
 }
 
-export default App;
+export default MyComponent;

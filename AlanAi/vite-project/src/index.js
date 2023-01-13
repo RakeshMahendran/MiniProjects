@@ -1,32 +1,28 @@
-import { Client } from "@notionhq/client"
+// import { Client } from "@notionhq/client"
 
-const notion = new Client(
-    { auth: 'secret_xfBAnRjR7DlZJY1VALE44IHqTdaJgMQMjlIePP3awmW' }
-    )
+// const notion = new Client(
+//     { auth: 'secret_xfBAnRjR7DlZJY1VALE44IHqTdaJgMQMjlIePP3awmW' }
+//     )
 
-const databaseId = "e649f6c751994c0ea85ac6cd6495e7f4"
+//const databaseId = "e649f6c751994c0ea85ac6cd6495e7f4"
+ import axios from 'axios';
 
-async function addItem(text,content) {
-  try {
-    const response = await notion.pages.create({
-      parent: { database_id: databaseId },
-      properties: {
-        title: {
-          title:[
-            {
-              "text": {
-                "content": text
-              }
-            }
-          ]
-        }
-      },
-    })
-    console.log(response)
-    console.log("Success! Entry added.")
-  } catch (error) {
-    console.error(error.body)
-  }
-}
+const options = {
+  method: 'POST',
+  url: 'https://api.notion.com/v1/databases',
+  headers: {
+    accept: 'application/json',
+    'Notion-Version': '2022-06-28',
+    'content-type': 'application/json'
+  },
+  data: {parent: 'string', properties: 'string'}
+};
 
-addItem("Yurts in Big Sur, California")
+axios
+  .request(options)
+  .then(function (response) {
+    console.log(response.data);
+  })
+  .catch(function (error) {
+    console.error(error);
+  });
