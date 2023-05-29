@@ -26,7 +26,7 @@ const App = () => {
    }
     return(
       <>
-       <div className={`text-center py-64 px-32 h-screen w-screen bg-${bg}-500`}>
+       {/* <div className={`text-center py-64 px-32 h-screen w-screen bg-${bg}-500`}>
               <div >
                 <Seatmap/>
                 <div className="m-3">
@@ -47,7 +47,10 @@ const App = () => {
                 </div>
                
               </div>
-        </div> 
+        </div>  */}
+        <div>
+          
+        </div>
       </>
        
     );
